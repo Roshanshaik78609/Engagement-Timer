@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammed Zubear & Shaik Arifa — Engagement</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: #1a0f06;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    overflow: hidden;
+  }
+
+  .bg {
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 20%, rgba(180,120,30,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 80% 80%, rgba(140,80,20,0.15) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 0%,  rgba(212,165,52,0.12) 0%, transparent 60%),
+      #1c1007;
+    z-index: 0;
+  }
+
+  /* floating particles */
+  .particles {
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  }
+  .p {
+    position: absolute;
+    width: 2px; height: 2px;
+    border-radius: 50%;
+    background: #d4a534;
+    opacity: 0;
+    animation: float linear infinite;
+  }
+  @keyframes float {
+    0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+    10%  { opacity: 0.6; }
+    90%  { opacity: 0.3; }
+    100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    max-width: 520px;
+    width: 92vw;
+    background: rgba(30,16,4,0.85);
+    border: 1px solid rgba(212,165,52,0.3);
+    border-radius: 20px;
+    padding: 40px 32px 36px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    animation: fadeUp 1.2s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(212,165,52,0.4), transparent 40%, transparent 60%, rgba(212,165,52,0.25));
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .arabic {
+    font-size: 22px;
+    color: #d4a534;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-family: serif;
+    animation: fadeUp 1.2s 0.1s ease both;
+  }
+
+  .divider {
+    width: 140px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d4a534, transparent);
+    margin: 10px auto;
+  }
+
+  .subtitle {
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: #a07840;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    animation: fadeUp 1.2s 0.2s ease both;
+  }
+
+  .names {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(20px, 5vw, 28px);
+    font-weight: 700;
+    color: #f0d898;
+    line-height: 1.35;
+    margin: 10px 0 4px;
+    animation: fadeUp 1.2s 0.3s ease both;
+  }
+
+  .amp {
+    color: #d4a534;
+    font-weight: 400;
+    font-size: 0.8em;
+  }
+
+  .venue {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #9a7435;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 1.2s 0.4s ease both;
+  }
+
+  .boxes {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+    animation: fadeUp 1.2s 0.5s ease both;
+  }
+
+  .box {
+    background: rgba(212,165,52,0.07);
+    border: 1px solid rgba(212,165,52,0.28);
+    border-radius: 12px;
+    width: 88px;
+    padding: 16px 8px 12px;
+    transition: border-color 0.3s;
+  }
+  .box:hover { border-color: rgba(212,165,52,0.6); }
+
+  .num {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: #f0d898;
+    line-height: 1;
+    display: block;
+    transition: color 0.2s;
+  }
+  .num.bump { color: #d4a534; }
+
+  .lbl {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    color: #9a7435;
+    text-transform: uppercase;
+    margin-top: 7px;
+    display: block;
+  }
+
+  .quote {
+    font-size: 12px;
+    color: #7a5c2a;
+    font-style: italic;
+    letter-spacing: 0.5px;
+    line-height: 1.7;
+    animation: fadeUp 1.2s 0.6s ease both;
+  }
+
+  .hosts {
+    margin-top: 22px;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    animation: fadeUp 1.2s 0.7s ease both;
+  }
+  .host {
+    text-align: center;
+  }
+  .host-label {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #7a5c2a;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+  }
+  .host-name {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    color: #c9a96e;
+  }
+
+  .gone {
+    font-family: 'Cinzel', serif;
+    font-size: 24px;
+    color: #f0d898;
+    padding: 20px 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+
+<div class="particles" id="pts"></div>
+
+<div class="card">
+  <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+  <div class="divider"></div>
+  <div class="subtitle">You are cordially invited to the</div>
+  <div class="subtitle" style="font-size:13px; color:#c9a96e; letter-spacing:5px; margin-top:2px;">Engagement Ceremony</div>
+
+  <div class="names">
+    Mohammed Zubear<br>
+    <span class="amp">&amp;</span><br>
+    Shaik Arifa
+  </div>
+
+  <div class="divider" style="margin-bottom:14px;"></div>
+  <div class="venue">Imperial Banquet Hall, Tolichowki &nbsp;·&nbsp; 6 June 2026 &nbsp;·&nbsp; 7:00 PM</div>
+
+  <div class="boxes" id="boxes">
+    <div class="box"><span class="num" id="d">--</span><span class="lbl">Days</span></div>
+    <div class="box"><span class="num" id="h">--</span><span class="lbl">Hours</span></div>
+    <div class="box"><span class="num" id="m">--</span><span class="lbl">Mins</span></div>
+    <div class="box"><span class="num" id="s">--</span><span class="lbl">Secs</span></div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="quote">Two souls, one promise<br>A beautiful beginning to a lifetime of love</div>
+
+  <div class="hosts">
+    <div class="host">
+      <span class="host-label">Mr. and Mrs.</span>
+      <span class="host-name">Khadar Basha</span>
+    </div>
+    <div class="host">
+      <span class="host-label">Mr. and Mrs.</span>
+      <span class="host-name">Mohammed Noor</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Particles
+  const pts = document.getElementById('pts');
+  for (let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'p';
+    p.style.left = Math.random() * 100 + 'vw';
+    p.style.animationDuration = (8 + Math.random() * 14) + 's';
+    p.style.animationDelay = (Math.random() * 12) + 's';
+    p.style.width = p.style.height = (1 + Math.random() * 2.5) + 'px';
+    pts.appendChild(p);
+  }
+
+  // Countdown — IST (UTC+5:30)
+  const target = new Date('2026-06-06T19:00:00+05:30').getTime();
+
+  function bump(el) {
+    el.classList.add('bump');
+    setTimeout(() => el.classList.remove('bump'), 300);
+  }
+
+  let prev = {};
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      document.getElementById('boxes').innerHTML = '<div class="gone">🎉 The moment has arrived!</div>';
+      return;
+    }
+    const vals = {
+      d: Math.floor(diff / 86400000),
+      h: Math.floor((diff % 86400000) / 3600000),
+      m: Math.floor((diff % 3600000) / 60000),
+      s: Math.floor((diff % 60000) / 1000)
+    };
+    for (const k of ['d','h','m','s']) {
+      const el = document.getElementById(k);
+      const str = String(vals[k]).padStart(2, '0');
+      if (str !== prev[k]) { el.textContent = str; bump(el); }
+      prev[k] = str;
+    }
+  }
+  tick();
+  setInterval(tick, 1000);
+</script>
+</body>
+</html>
